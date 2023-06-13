@@ -8,7 +8,7 @@ export class InvokeService {
 
   async invoke(data: InvokeDto) {
     if (data.withData) {
-      this.invokeProducer.notifyCompletion(data);
+      this.invokeProducer.importData(data);
       console.log('withData');
     } else {
       console.log('withoutData');

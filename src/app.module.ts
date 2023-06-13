@@ -5,7 +5,10 @@ import { AppService } from './app.service';
 import { InvokeController } from './invoke/invoke.controller';
 import { InvokeService } from './invoke/invoke.service';
 import { InvokeProducer } from './invoke/invoke.producer';
-import { InvokeConsumer } from './invoke/invoke.consumer';
+import {
+  InvokeImportConsumer,
+  InvokeNotifyConsumer,
+} from './invoke/invoke.consumer';
 
 @Module({
   imports: [
@@ -28,6 +31,12 @@ import { InvokeConsumer } from './invoke/invoke.consumer';
     ),
   ],
   controllers: [AppController, InvokeController],
-  providers: [AppService, InvokeService, InvokeProducer, InvokeConsumer],
+  providers: [
+    AppService,
+    InvokeService,
+    InvokeProducer,
+    InvokeNotifyConsumer,
+    InvokeImportConsumer,
+  ],
 })
 export class AppModule {}

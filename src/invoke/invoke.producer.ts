@@ -13,12 +13,14 @@ export class InvokeProducer {
 
   async notifyCompletion(data: InvokeDto) {
     await this.notifyCompletionQueue.add('notify-completion-job', data, {
-      delay: 5000,
+      delay: 2500,
     });
   }
 
   async importData(data: InvokeDto) {
-    await this.importDataQueue.add('import-data-job', data);
+    await this.importDataQueue.add('import-data-job', data, {
+      delay: 5000,
+    });
   }
 
   async exportData(data: InvokeDto) {
