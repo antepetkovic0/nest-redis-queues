@@ -2,7 +2,10 @@ import { Module } from '@nestjs/common';
 import { BullModule } from '@nestjs/bull';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { ImportDataModule } from './import-data/import-data.module';
+import { InvokeController } from './invoke/invoke.controller';
+import { InvokeService } from './invoke/invoke.service';
+import { InvokeProducer } from './invoke/invoke.producer';
+import { InvokeConsumer } from './invoke/invoke.consumer';
 
 @Module({
   imports: [
@@ -12,9 +15,19 @@ import { ImportDataModule } from './import-data/import-data.module';
         port: 5003,
       },
     }),
-    ImportDataModule,
+    BullModule.registerQueue(
+      {
+        name: 'notify-completion',
+      },
+      {
+        name: 'import-data',
+      },
+      {
+        name: 'export-data',
+      },
+    ),
   ],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [AppController, InvokeController],
+  providers: [AppService, InvokeService, InvokeProducer, InvokeConsumer],
 })
 export class AppModule {}
