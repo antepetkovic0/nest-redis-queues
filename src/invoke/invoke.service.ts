@@ -8,10 +8,13 @@ export class InvokeService {
 
   async invoke(data: InvokeDto) {
     if (data.withData) {
-      this.invokeProducer.importData(data);
-      console.log('withData');
+      if (data.isForNotifyCompletion) {
+        this.invokeProducer.notifyCompletion(data);
+      } else {
+        this.invokeProducer.importData(data);
+      }
     } else {
-      console.log('withoutData');
+      this.invokeProducer.exportData(data);
     }
   }
 }

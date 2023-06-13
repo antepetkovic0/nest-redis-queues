@@ -48,8 +48,8 @@ Enqueue and fire as soon as possible job
 ## Todos
 
 - [x] invoke route and belonging service
-- [x] 3 separate queues for each job
-- [ ] consumers and producers for each of queues
+- [x] register 3 separate queues for each job
+- [x] implement consumers and producers for each of queues
 
 ## Installation
 

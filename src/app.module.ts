@@ -6,6 +6,7 @@ import { InvokeController } from './invoke/invoke.controller';
 import { InvokeService } from './invoke/invoke.service';
 import { InvokeProducer } from './invoke/invoke.producer';
 import {
+  InvokeExportConsumer,
   InvokeImportConsumer,
   InvokeNotifyConsumer,
 } from './invoke/invoke.consumer';
@@ -37,6 +38,7 @@ import {
     InvokeProducer,
     InvokeNotifyConsumer,
     InvokeImportConsumer,
+    InvokeExportConsumer,
   ],
 })
 export class AppModule {}
